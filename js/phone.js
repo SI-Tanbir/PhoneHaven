@@ -1,6 +1,7 @@
 // console.log('connection successful')
 
 let phoneDataLoad = async (searchText) => {
+    loadingContaner(true);
   let res = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=${searchText}`
   );
@@ -53,6 +54,8 @@ let showPhone = (phones) => {
     `;
     container.appendChild(div);
   });
+
+  loadingContaner(false);
 };
 
 
@@ -62,4 +65,18 @@ function phonesearch() {
   let searchText = search.value;
   console.log(searchText);
   phoneDataLoad(searchText);
+}
+
+//adding loding features
+
+let loadingContaner = (isloading) =>{
+
+    if(isloading){
+        document.getElementById('loading-spinner').classList.remove('hidden');
+    }
+    else{
+        document.getElementById('loading-spinner').classList.add('hidden');
+
+    }
+
 }
