@@ -1,10 +1,11 @@
 // console.log('connection successful')
 
-let phoneDataLoad = async (searchText) => {
-  loadingContaner(true);
+let phoneDataLoad = async (searchText='samsung') => {
   let res = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=${searchText}`
   );
+  //adding spinner here
+  loadingContaner(true);
   let data = await res.json();
   let phones = data.data;
   showPhone(phones);
@@ -48,26 +49,6 @@ let showPhone = (phones) => {
 <label for="my_modal_6" onclick="showoptions('${phone.slug}')" class="btn btn-primary">Show more details</label>
 
 
-<input type="checkbox" id="my_modal_6" class="modal-toggle" />
-<div class="modal" role="dialog">
-  <div class="modal-box">
-   
-
-   <figure>
-                    <img src="${phone.image}" alt="iphone" />
-                </figure>
-                
-      <p class="py-4"><b>Phone name:</b>${phone.phone_name}</p>               
-      <p class="py-4"><b>Brand:</b>${phone.brand}</p>
-
-  
-    <div class="modal-action">
-
-      <label for="my_modal_6" class="btn">Close!</label>
-    </div>
-  </div>
-</div>
-
 
 
 
@@ -93,6 +74,12 @@ function phonesearch() {
   console.log(searchText);
   phoneDataLoad(searchText);
 }
+
+//defalut phone load
+// phoneDataLoad(searchText)
+// phonesearch();
+phoneDataLoad();
+
 
 //adding loding features
 
