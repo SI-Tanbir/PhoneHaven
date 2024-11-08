@@ -72,9 +72,50 @@ let showPhone = (phones) => {
 
 // modal show option features adding here
 
-let showoptions = (id) => {
+let showoptions = async(id) => {
   console.log("its working", id);
+  //now loading data
+  let res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+  let data =await res.json();
+  console.log(data);
+  let phone=  data.data;
+  showPhoneDetails(phone);
+ 
 };
+
+
+let showPhoneDetails =(phone) =>{
+
+  my_modal_5.showModal();
+  let modal_div=document.createElement('div');
+  modal_div.innerHTML=``; 
+  let modal_details=document.getElementById('modal-details');
+
+  
+  
+  modal_div.innerHTML=`
+  <div>
+                    <figure>
+                    <img src="${phone.image}" alt="iphone" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">${phone.slug}</h2>
+                  </div>  
+</div>
+
+  `;
+
+  modal_details.appendChild(modal_div);
+}
+//now we remove the append child after click button;
+function removeModalChild() {
+  let div = document.getElementById('modal-details');
+
+  // Remove all child elements within the div
+  div.innerHTML = ''; // Clears the entire content of the div
+  console.log("All children removed");
+}
+
 
 function phonesearch() {
   let search = document.getElementById("searchInput");

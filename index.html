@@ -40,9 +40,29 @@
 
 
         </div>
-
+<!-- show all buttion here -->
         <button id="showall" class="hidden mt-3 btn btn-primary">Show all</button>
 
+<!-- starting of modal -->
+<!-- Open the modal using ID.showModal() method -->
+
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box" >
+
+    <h3 class="text-lg font-bold">Hello!</h3>
+   <!-- extra dynamic information added here -->
+    <div id="modal-details">
+
+
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button onclick="removeModalChild()" class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 
 
